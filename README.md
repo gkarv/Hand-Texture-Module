@@ -31,7 +31,7 @@ We propose a lightweight, transformer-based **texture module** that consolidates
 ## 🔧 Setup Pretrained Weights
 
 1. **Download the weights**  
-   👉 [texture_supervised_hamer_weights](http://cvrlcode.ics.forth.gr/web_share/gkarv/texture_supervised_hamer_weights.ckpt)
+   👉 [texture_supervised_hamer_weights](https://forthgr-my.sharepoint.com/:u:/g/personal/gkarv_ics_forth_gr/IQDIDDN3B6e9RZFraetL-wClAdBcbeMSbRHsjWORwZf5irM?e=eRBnyz)
    These weights have been retrained with our texture–supervised framework, incorporating the learned texture priors described in the paper.
 
 2. **Place the file** into the following directory (after cloning and setting up the [HaMeR repo](https://github.com/geopavlakos/hamer)): hamer/_DATA/hamer_ckpts/checkpoints/
