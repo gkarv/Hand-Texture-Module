@@ -28,11 +28,11 @@ We propose a lightweight, transformer-based **texture module** that consolidates
 ---
 
 ## 🐳 Installation (Docker only)
-This project builds on the official [HaMeR](https://github.com/geopavlakos/hamer) codebase and uses its **Docker Compose** setup.
+This project builds on the official [HaMeR](https://github.com/gkarv/Hand-Texture-Module) codebase and uses its **Docker Compose** setup.
 
 1. **Clone HaMeR recursively**
    ```bash
-   git clone --recursive https://github.com/geopavlakos/hamer.git
+   git clone --recursive https://github.com/gkarv/Hand-Texture-Module.git
    cd hamer
    ```
 
