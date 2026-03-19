@@ -27,7 +27,7 @@ ENV PATH="/opt/venv/bin:$PATH"
 # Activate virtual environment and install dependencies:
 # REVIEW: We need to install/upgrade wheel and setuptools first because otherwise installation fails:
 RUN --mount=type=cache,target=/root/.cache/pip \
-    pip install --upgrade wheel setuptools
+    pip install --upgrade wheel "setuptools<82"
 
 # Install torch and torchvision:
 RUN --mount=type=cache,target=/root/.cache/pip \
