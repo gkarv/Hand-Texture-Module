@@ -1,4 +1,4 @@
-ARG BASE=nvidia/cuda:12.6.2-devel-ubuntu22.04
+ARG BASE=pytorch/pytorch:2.4.0-cuda11.8-cudnn9-devel
 FROM ${BASE} AS hamer
 
 # Install OS dependencies:
@@ -18,36 +18,19 @@ RUN apt-get install -y --no-install-recommends --fix-missing \
 # Install hamer:
 WORKDIR /app
 
-# Create virtual environment:
-RUN python3 -m venv /opt/venv
 
-# Add virtual environment to PATH
-ENV PATH="/opt/venv/bin:$PATH"
-
-# Activate virtual environment and install dependencies:
-# REVIEW: We need to install/upgrade wheel and setuptools first because otherwise installation fails:
-RUN --mount=type=cache,target=/root/.cache/pip \
-    pip install --upgrade wheel "setuptools<82"
-
-# Install torch and torchvision:
-RUN --mount=type=cache,target=/root/.cache/pip \
-    pip install torch==2.2.0 torchvision==0.17.0 --index-url https://download.pytorch.org/whl/cu118
-
-# REVIEW: Numpy is installed separately because otherwise installation fails:
-RUN --mount=type=cache,target=/root/.cache/pip \
-    pip install numpy
-
-# Install gdown (used for fetching scripts):
-RUN --mount=type=cache,target=/root/.cache/pip \
-    pip install gdown
 
 # Install third-party dependencies ViTPose:
 COPY third-party/ third-party/
-RUN --mount=type=cache,target=/root/.cache/pip \
-    pip install -v -e third-party/ViTPose
 
 # Install project dependencies:
 COPY . .
+
+RUN pip install --no-build-isolation  torch==2.4.0 torchvision==0.19.0 torchaudio==2.4.0 --index-url https://download.pytorch.org/whl/cu118
+RUN pip install --no-build-isolation -e .[all]
+RUN pip install --no-build-isolation -v -e third-party/ViTPose
+#RUN pip install --no-build-isolation causal-conv1d>=1.4.0
+RUN pip install --no-build-isolation setuptools==60.2.0
 # Install hamer:
-RUN --mount=type=cache,target=/root/.cache/pip \
-    pip install -e .[all]
+RUN pip install --no-build-isolation -e .[all]
+RUN pip install --no-build-isolation "git+https://github.com/facebookresearch/pytorch3d.git"
