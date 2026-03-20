@@ -20,17 +20,13 @@ WORKDIR /app
 
 
 
-# Install third-party dependencies ViTPose:
 COPY third-party/ third-party/
 
 # Install project dependencies:
 COPY . .
 
 RUN pip install --no-build-isolation  torch==2.4.0 torchvision==0.19.0 torchaudio==2.4.0 --index-url https://download.pytorch.org/whl/cu118
+RUN pip install --no-build-isolation setuptools==60.2.0
 RUN pip install --no-build-isolation -e .[all]
 RUN pip install --no-build-isolation -v -e third-party/ViTPose
-#RUN pip install --no-build-isolation causal-conv1d>=1.4.0
-RUN pip install --no-build-isolation setuptools==60.2.0
-# Install hamer:
-RUN pip install --no-build-isolation -e .[all]
-RUN pip install --no-build-isolation "git+https://github.com/facebookresearch/pytorch3d.git"
+

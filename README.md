@@ -27,36 +27,44 @@ We propose a lightweight, transformer-based **texture module** that consolidates
 
 ---
 
-## 🐳 Installation (Docker only)
-This project builds on the official [HaMeR](https://github.com/gkarv/Hand-Texture-Module) codebase and uses its **Docker Compose** setup.
+## 🐳 Installation (Docker Only)
 
-1. **Clone HaMeR recursively**
-   ```bash
-   git clone --recursive https://github.com/gkarv/Hand-Texture-Module.git
-   cd hamer
-   ```
+This project builds upon the **HaMeR** framework and follows its Docker-based setup.
 
-2. **Build and start the Docker container**
-   ```bash
-   docker compose -f ./docker/docker-compose.yml up -d
-   ```
+### 1. Clone the repository
+```bash
+git clone --recursive https://github.com/gkarv/Hand-Texture-Module.git
+cd Hand-Texture-Module
+```
 
-3. **Enter the container**
-   ```bash
-   docker compose -f ./docker/docker-compose.yml exec hamer-dev /bin/bash
-   ```
+### 2. Build and launch the container
+```bash
+docker compose -f ./docker/docker-compose.yml up -d
+```
 
-4. **Download the HaMeR demo data inside the container**
-   ```bash
-   bash fetch_demo_data.sh
-   ```
+### 3. Enter the container
+```bash
+docker compose -f ./docker/docker-compose.yml exec hamer-dev /bin/bash
+```
 
-5. **Download the MANO model**  
-   Register on the [MANO website](https://mano.is.tue.mpg.de) and download the right-hand model.  
-   Place `MANO_RIGHT.pkl` under:
-   ```text
-   _DATA/data/mano/
-   ```
+### 4. Install PyTorch3D
+```bash
+pip install "git+https://github.com/facebookresearch/pytorch3d.git"
+```
+
+### 5. Download demo data
+```bash
+bash fetch_demo_data.sh
+```
+
+### 6. Download MANO model
+
+Register at the [MANO website](https://mano.is.tue.mpg.de) and download the **right-hand model**.
+
+Place the file:
+```text
+_DATA/data/mano/MANO_RIGHT.pkl
+```
 
 ---
 
