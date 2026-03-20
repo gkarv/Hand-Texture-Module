@@ -65,7 +65,13 @@ Place the file:
 ```text
 _DATA/data/mano/MANO_RIGHT.pkl
 ```
+### Resolve NumPy / pyrender / OSMesa issues
+If you encounter compatibility issues related to **NumPy**, **pyrender**, or **OSMesa**, run:
 
+```bash
+pip install --upgrade --force-reinstall numpy==1.26.4
+conda install -n base -c conda-forge "libstdcxx-ng>=12" "libgcc-ng>=12"
+```
 ---
 
 ## 🔧 Setup Texture-Supervised Weights

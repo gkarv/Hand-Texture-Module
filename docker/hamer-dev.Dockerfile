@@ -13,6 +13,7 @@ RUN apt-get install -y --no-install-recommends --fix-missing \
     ffmpeg \
     libsm6 libxext6 \
     libglfw3-dev libgles2-mesa-dev \
+    libosmesa6 libosmesa6-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # Install hamer:
